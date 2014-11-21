@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/griditems">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dip"
+            android:id="@+id/horizontal1">
+
+            <TextView android:id="@+id/textoResposta1"
+                android:text=""
+                android:layout_weight="0.5"
+                android:textSize="18sp"
+                android:background="@drawable/marco1"
+                android:gravity="center"
+                android:padding="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:background="@color/gris_oscuro"/>
+
+            <TextView android:id="@+id/textoResposta2"
+                android:text=""
+                android:layout_weight="0.5"
+                android:textSize="18sp"
+                android:background="@drawable/marco1"
+                android:gravity="center"
+                android:padding="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="@color/gris_oscuro"/>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/horizontal2"
+            android:padding="0dip">
+            <TextView android:id="@+id/textoResposta3"
+                android:text=""
+                android:layout_weight="0.5"
+                android:background="@drawable/marco1"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:padding="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:background="@color/gris_oscuro"/>
+            <TextView android:id="@+id/textoResposta4"
+                android:text=""
+                android:layout_weight="0.5"
+                android:textSize="18sp"
+                android:background="@drawable/marco1"
+                android:gravity="center"
+                android:padding="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+    </LinearLayout>
+
+
