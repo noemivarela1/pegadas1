@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">pegadas</string>
+    <string name="hello_world">Hola mundo otra vez!</string>
+    <string name="action_settings">Configuración</string>
+    <string name="pregunta1">Pregunta 1</string>
+    <string name="pregunta1Enunciado">Los animales mamíferos que andan sobre unas uñas muy desarrolladas compuestas por queratina que cubren los dedos de las patas son:</string>
+    <string name="pregunta1Resposta1">Plantígrados</string>
+    <string name="pregunta1Resposta2">Dixitígrados</string>
+    <string name="pregunta1Resposta3">Ungulados</string>
+    <string name="pregunta1Solucion1">0</string>
+    <string name="pregunta1Solucion2">0</string>
+    <string name="pregunta1Solucion3">1</string>
+    <string name="pregunta1Solucion4">0</string>
+
+</resources>

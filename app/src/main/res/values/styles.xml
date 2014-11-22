@@ -1,0 +1,34 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="PegadasTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.NoMainActivity</item>
+    </style>
+
+    <style name="ActionBar.Solid.NoMainActivity" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+       <item name="android:icon">@drawable/ic_launcher</item>
+
+        <item name="android:background">@color/gris_oscuro</item>
+        <!--<item name="android:titleTextStyle">@style/TitleBarTextColor</item>-->
+        <item name="android:displayOptions">showCustom|showHome</item>
+    </style>
+    <!--
+    <style name="TitleBarTextColor" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/azul_logo</item>
+    </style>
+    -->
+    <!-- Main activity theme -->
+   <style name="MainActivityTheme" parent="PegadasTheme">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Pegadas.NoTitle</item>
+    </style>
+
+    <!-- Main activity action bar style -->
+   <!--<style name="ActionBar.Solid.Pegadas.NoTitle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">-->
+    <style name="ActionBar.Solid.Pegadas.NoTitle" parent="@style/ActionBar.Solid.NoMainActivity">
+        <item name="android:displayOptions">useLogo|showHome</item>
+        <item name="android:logo">@drawable/ic_logo</item>
+        <!--<item name="android:background">@color/gris_oscuro</item>-->
+    </style>
+
+</resources>
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pegadas</string>
+    <string name="hello_world">Ola mundo outra vez!</string>
+    <string name="action_settings">Configuración</string>
+    <string name="pregunta1">Pregunta 1</string>
+    <string name="pregunta1Enunciado">Os animáis mamíferos que andan sobre unhas unllas moi desenvolvidas compostas por queratina que cubren os dedos das patas son...</string>
+    <string name="pregunta1Resposta1">Cefalópodos</string>
+    <string name="pregunta1Resposta2">Artrópodos</string>
+    <string name="pregunta1Resposta3">Ungulados</string>
+    <string name="pregunta1Resposta4">Ápodos</string>
+    <string name="pregunta1Solucion1">0</string>
+    <string name="pregunta1Solucion2">0</string>
+    <string name="pregunta1Solucion3">1</string>
+    <string name="pregunta1Solucion4">0</string>
+    <!--posibilidades Uñeiro - miriápodo - artrópodo - ápodo - cefalópodo - perisodáctilo-->
+</resources>

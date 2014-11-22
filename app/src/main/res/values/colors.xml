@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="gris_oscuro">#505050</color>
+    <color name="granate">#99004C</color>
+    <color name="black">#000000</color>
+    <color name="bermello">#FF0000</color>
+    <color name="azul_logo">#1B90FF</color>
+</resources>
