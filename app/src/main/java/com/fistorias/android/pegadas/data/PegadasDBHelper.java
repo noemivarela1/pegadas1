@@ -2,6 +2,7 @@ package com.fistorias.android.pegadas.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -76,5 +77,13 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
         newRowId=db.insert(Preguntas.PREGUNTAS, null, values);
         db.close(); // Closing database connection
         //return newRowId;
+    }
+    public Cursor getPregunta(int num_caso,int num_pregunta){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String[] campos = new String[] {Preguntas._ID, Preguntas.NUM_CASO,Preguntas.NUM_PREGUNTA,Preguntas.ENUNCIADO};
+        String[] args = new String[] {String.valueOf(num_caso), String.valueOf(num_pregunta)};
+
+        Cursor c = db.query(Preguntas.PREGUNTAS, campos, "num_caso=? and num_pregunta=?", args, null, null, null);
+        return c;
     }
 }

@@ -3,6 +3,7 @@ package com.fistorias.android.pegadas;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,19 +24,33 @@ public class OptionListActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setTitle(R.string.pregunta1);
 
-        PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
+        /*PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
 
         Log.d("Insert: ", "Inserting ..");
         long rowIdPregunta=mDbHelper.addPregunta(new Pregunta(1,1,"GL","PR","PreguntaX"));
         mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta1",0,"incorrecto1"));
         mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta2",0,"incorrecto2"));
         mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta3",0,"correcto"));
-        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta4",0,"incorrecto4"));
+        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta4",0,"incorrecto4"));*/
+        PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
+        Cursor cursor=mDbHelper.getPregunta(1,1);
+
+        //Nos aseguramos de que existe al menos un registro
+        String enunciado="";
+        if (cursor.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                enunciado= cursor.getString(3);
+                Log.i("OptionListActivity","enunciado:"+enunciado);
+            } while(cursor.moveToNext());
+        }
+
 
         TextView preguntaView = (TextView) findViewById(R.id.textoPregunta);
-        preguntaView.setText(R.string.pregunta1Enunciado);
+        preguntaView.setText(enunciado);
+        //preguntaView.setText(R.string.pregunta1Enunciado);
 
-        Log.i("OptionListActivity", "entra en el adapter del grid");
+        Log.i("OptionListActivity", "utiliza un array");
 
         int capacidade=4;
         String[] idRespostas=new String[capacidade];
