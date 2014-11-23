@@ -4,7 +4,7 @@ package com.fistorias.android.pegadas;
  * Created by noemi on 22/11/2014.
  */
 public class Pregunta {
-    int id_pregunta;
+    //int id_pregunta;
     int num_caso;
     int num_pregunta;
     String cod_idioma;

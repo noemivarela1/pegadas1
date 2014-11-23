@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fistorias.android.pegadas.data.PegadasDBHelper;
+
 /**
  * Created by noemi on 16/11/2014.
  */
@@ -20,6 +22,15 @@ public class OptionListActivity extends Activity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setTitle(R.string.pregunta1);
+
+        PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
+
+        Log.d("Insert: ", "Inserting ..");
+        long rowIdPregunta=mDbHelper.addPregunta(new Pregunta(1,1,"GL","PR","PreguntaX"));
+        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta1",0,"incorrecto1"));
+        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta2",0,"incorrecto2"));
+        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta3",0,"correcto"));
+        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta4",0,"incorrecto4"));
 
         TextView preguntaView = (TextView) findViewById(R.id.textoPregunta);
         preguntaView.setText(R.string.pregunta1Enunciado);

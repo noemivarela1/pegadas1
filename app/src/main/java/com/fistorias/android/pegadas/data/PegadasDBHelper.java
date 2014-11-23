@@ -4,10 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import com.fistorias.android.pegadas.Pregunta;
+import com.fistorias.android.pegadas.Resposta;
 import com.fistorias.android.pegadas.data.PegadasDBContract.Preguntas;
 import com.fistorias.android.pegadas.data.PegadasDBContract.Respostas;
-import com.fistorias.android.pegadas.Pregunta;
 
 /**
  * Created by noemi on 22/11/2014.
@@ -16,12 +18,15 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Pegadas.db";
+
     public PegadasDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.i("PegadasDBHelper","llamó al constructor");
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.i("PegadasDBHelper", "entra en onCreate");
         String  SQL_CREATE_PREGUNTAS_TABLE = "CREATE TABLE " + Preguntas.PREGUNTAS + "("
                 + Preguntas._ID + " INTEGER PRIMARY KEY," + Preguntas.NUM_CASO + " INTEGER,"
                 + Preguntas.NUM_PREGUNTA+ " INTEGER,"+Preguntas.COD_IDIOMA + " TEXT," + Preguntas.TIPO_PREGUNTA+" TEXT ,"
@@ -30,6 +35,7 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
                 + Respostas._ID + " INTEGER PRIMARY KEY," + Respostas.ID_PREGUNTA + " INTEGER,"
                 + Respostas.RESPOSTA+ " TEXT,"+Respostas.E_RESPOSTA_CORRECTA + " INTEGER,"
                 + Respostas.EXPLICACION + " TEXT" + ")";
+        sqLiteDatabase.execSQL(SQL_CREATE_PREGUNTAS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_RESPOSTAS_TABLE);
     }
 
@@ -40,8 +46,8 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
 
     }
 
-    // Adding new contact
-    void addPregunta(Pregunta pregunta) {
+    // Añadir nueva pregunta
+    public long addPregunta(Pregunta pregunta) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -51,7 +57,24 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
         values.put(Preguntas.TIPO_PREGUNTA,pregunta.getTipo_pregunta());
         values.put(Preguntas.ENUNCIADO,pregunta.getEnunciado());
         // Inserting Row
-        db.insert(Preguntas.PREGUNTAS, null, values);
+        long newRowId;
+        newRowId=db.insert(Preguntas.PREGUNTAS, null, values);
         db.close(); // Closing database connection
+        return newRowId;
+    }
+    // Añadir nueva pregunta
+    public void addResposta(Resposta resposta) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Respostas.ID_PREGUNTA, resposta.getId_pregunta());
+        values.put(Respostas.RESPOSTA, resposta.getResposta());
+        values.put(Respostas.E_RESPOSTA_CORRECTA,resposta.getE_resposta_correcta());
+        values.put(Respostas.EXPLICACION,resposta.getExplicacion());
+        // Inserting Row
+        long newRowId;
+        newRowId=db.insert(Preguntas.PREGUNTAS, null, values);
+        db.close(); // Closing database connection
+        //return newRowId;
     }
 }
