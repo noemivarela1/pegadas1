@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
             String enunciado=pregunta.getString("enunciado");
             Log.i("MainActivity","enunciado:"+enunciado);
             ArrayList list = new ArrayList();
-            JSONArray jArray = jObject.getJSONArray("respostas");
+            JSONArray jArray = caso.getJSONArray("respostas");
             for (int i=0; i < jArray.length(); i++)
             {
                 try {

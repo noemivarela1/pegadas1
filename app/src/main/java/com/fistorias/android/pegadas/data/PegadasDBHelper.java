@@ -74,7 +74,7 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
         values.put(Respostas.EXPLICACION,resposta.getExplicacion());
         // Inserting Row
         long newRowId;
-        newRowId=db.insert(Preguntas.PREGUNTAS, null, values);
+        newRowId=db.insert(Respostas.RESPOSTAS, null, values);
         db.close(); // Closing database connection
         //return newRowId;
     }
@@ -84,6 +84,14 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
         String[] args = new String[] {String.valueOf(num_caso), String.valueOf(num_pregunta)};
 
         Cursor c = db.query(Preguntas.PREGUNTAS, campos, "num_caso=? and num_pregunta=?", args, null, null, null);
+        return c;
+    }
+    public Cursor getRespuestas(int id_pregunta){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String[] campos = new String[] {Respostas.RESPOSTA, Respostas.E_RESPOSTA_CORRECTA,Respostas.EXPLICACION};
+        String[] args = new String[] {String.valueOf(id_pregunta)};
+
+        Cursor c = db.query(Respostas.RESPOSTAS, campos, "id_pregunta=?", args, null, null, null);
         return c;
     }
 }
