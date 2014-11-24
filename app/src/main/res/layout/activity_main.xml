@@ -12,15 +12,15 @@
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pregunta 1"
-        android:onClick="doQuestion"/>
+        android:text="Caso 1"
+        android:onClick="showQuestions"/>
 
     <Button android:id="@+id/button2"
         android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pregunta 2"
-        android:onClick="doQuestion"/>
+        android:text="Caso 2"
+        android:onClick="showQuestions"/>
 
 
 </RelativeLayout>

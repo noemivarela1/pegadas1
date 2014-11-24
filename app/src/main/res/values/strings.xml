@@ -18,4 +18,5 @@
     <string name="incorrecto">Resposta non correcta!</string>
     <string name="informacion">Información</string>
     <string name="aceptar">Aceptar</string>
+    <string name="pregunta">Pregunta</string>
 </resources>

@@ -84,8 +84,13 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void doQuestion (View view){
+    /*public void doQuestion (View view){
          Intent intent = new Intent(this, OptionListActivity.class);
+        startActivity(intent);
+    }*/
+
+    public void showQuestions (View view){
+        Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
     }
 
