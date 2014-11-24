@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
     }*/
 
     public void showQuestions (View view){
+        Log.i("MainActivity","quere mostrar as preguntas");
         Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
     }
