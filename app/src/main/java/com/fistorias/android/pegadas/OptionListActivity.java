@@ -3,7 +3,6 @@ package com.fistorias.android.pegadas;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -25,14 +24,6 @@ public class OptionListActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setTitle(R.string.pregunta1);
 
-        /*PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
-
-        Log.d("Insert: ", "Inserting ..");
-        long rowIdPregunta=mDbHelper.addPregunta(new Pregunta(1,1,"GL","PR","PreguntaX"));
-        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta1",0,"incorrecto1"));
-        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta2",0,"incorrecto2"));
-        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta3",0,"correcto"));
-        mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta4",0,"incorrecto4"));*/
         PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
         Cursor cursor=mDbHelper.getPregunta(1,1);
 
@@ -67,8 +58,6 @@ public class OptionListActivity extends Activity {
                 int id = this.getResources().getIdentifier(idRespostas, "id", this.getPackageName());
                 textView[j-1]=(TextView)findViewById(id);
                 textView[j-1].setText(resposta);
-
-                //textView[j-1].setTag(1,j-1);
                 int correcta=cursor1.getInt(1);
                 String explicacion=cursor1.getString(2);
                 String[] parametros={String.valueOf(j),String.valueOf(correcta),explicacion,resposta};
@@ -78,19 +67,9 @@ public class OptionListActivity extends Activity {
                     public void onClick(View v) {
                         Log.i("OptionListActivity","click en un textView");
 
-                        Context context = getApplicationContext();
+                        //Context context = getApplicationContext();
                         String[] parametros=(String[])v.getTag();
-                        //Integer integer1=(Integer)v.getTag(1);
-                        //int i=integer1.intValue();
-                        //parametros[0]++;
-                        //i++;
                         Log.i("OptionListActivity","i:"+parametros[0]);
-                        //Integer correcta1=(Integer)v.getTag(2);
-                        //String solucion="pregunta1Solucion"+i;
-                        //Log.i("OptionListActivity","solucion:"+solucion);
-                        //int idSol=context.getResources().getIdentifier(solucion, "string", context.getPackageName());
-                        //Log.i("OptionListActivity","idSol:"+idSol);
-                        //CharSequence sol=getText(idSol);
 
                         Log.i("OptionListActivity","correcta1:"+parametros[1]);
                         String text=parametros[2];
@@ -99,9 +78,6 @@ public class OptionListActivity extends Activity {
                         }else{
                             text=getResources().getString(R.string.incorrecto)+"\n\n"+text;
                         }
-                        //int duration = Toast.LENGTH_LONG;
-                        //Toast toast=Toast.makeText(context,text,duration);
-                        //toast.show();
 
                         // 1. Instantiate an AlertDialog.Builder with its constructor
                         AlertDialog.Builder builder = new AlertDialog.Builder(OptionListActivity.this);
@@ -111,21 +87,12 @@ public class OptionListActivity extends Activity {
                                 Log.i("OptionListActivity","entra en onClick de Dialog");
                             }
                         });
-
-
                         // 2. Chain together various setter methods to set the dialog characteristics
                         builder.setMessage(text);
-                                builder.setTitle(parametros[3]);
-                            /*dialog.setButton(R.string.aceptar, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // here you can add functions
-                            }
-                        });*/
-
+                        builder.setTitle(parametros[3]);
                         // 3. Get the AlertDialog from create()
                         Log.i("OptionListActivity","crea el dialogo");
                         AlertDialog dialog = builder.create();
-                        //dialog.show();
                         dialog.show();
 
                     }
