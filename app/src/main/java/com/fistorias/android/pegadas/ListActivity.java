@@ -2,6 +2,7 @@ package com.fistorias.android.pegadas;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,15 +19,16 @@ public class ListActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("ListActivity", "entra en onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
 
         listView = (ListView) findViewById(R.id.lista);
 
-        String[] valores={};
+        String[] valores=new String[numMaxPreguntasCaso];
         for (int i=0;i<numMaxPreguntasCaso;i++){
             String pregunta=this.getResources().getString(R.string.pregunta);
-            valores[i]=pregunta+" "+i;
+            valores[i]=pregunta+" "+(i+1);
         }
 
         // Define a new Adapter
