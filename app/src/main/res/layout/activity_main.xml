@@ -1,3 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/main"
+    android:background="@color/gris_oscuro">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:padding="0dip"
+    android:layout_weight="0.4"
+    android:id="@+id/textoInfo">
+
+    <TextView android:id="@+id/texto_inicio"
+        android:text="prueba de texto"
+        android:background="@drawable/marco1"
+        android:layout_width="match_parent"
+        android:lineSpacingMultiplier="1.2"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="0dip"
+            android:layout_weight="0.6"
+            android:id="@+id/layoutGrid"
+        android:weightSum="1">
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+
+        android:numColumns="2"
+        android:layout_marginTop="4dp"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center" />
+    </LinearLayout>
+</LinearLayout>
+<!--
+ android:columnWidth="90dp"
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,14 +65,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Caso 1"
-        android:onClick="showQuestions"/>
+        android:tag="1"
+        android:onClick="comezarCaso"/>
 
     <Button android:id="@+id/button2"
         android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Caso 2"
-        android:onClick="showQuestions"/>
+        android:tag="2"
+        android:onClick="comezarCaso"/>
 
 
-</RelativeLayout>
+</RelativeLayout>-->

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="azules">
+        <item>0xFF75BAFD</item>
+
+        <item>0xFF49A6FF</item>
+        <item>0xFF1E90FF</item>
+        <item>0xFF0986FF</item>
+        <item>0xFF0169CE</item>
+
+
+
+    </array>
+
+</resources>
+    <!--
+<item>0xFFD9ECFF</item>
+<item>0xFFA0D0FE</item>
+<item>0xFF4EA6FA</item>
+<item>0xFF268EF2</item>
+<item>0xFF0986FF</item>
+<item>0xFF4FA7FD</item>-->

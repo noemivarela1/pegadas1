@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 /**
- * Actividad para la lista de preguntas
+ * Actividad para la lista de preguntas - no usar
  */
 public class ListActivity extends Activity {
     ListView listView ;

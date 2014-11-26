@@ -1,12 +1,19 @@
 package com.fistorias.android.pegadas;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.TextView;
 
 import com.fistorias.android.pegadas.data.PegadasDBHelper;
 
@@ -21,11 +28,77 @@ import java.util.HashMap;
 
 
 public class MainActivity extends Activity {
-
+    int numCasos=10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GridView gridView = (GridView) findViewById(R.id.gridview);
+
+        String[] valores=new String[numCasos];
+        for (int i=0;i<numCasos;i++){
+            String pregunta=this.getResources().getString(R.string.caso);
+            valores[i]=pregunta+" "+(i+1);
+        }
+
+        // Define a new Adapter
+        // First parameter - Context
+        // Second parameter - Layout for the row
+        // Third parameter - ID of the TextView to which the data is written
+        // Forth - the Array of data
+
+        ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1,valores) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView txt=(TextView)view.findViewById(android.R.id.text1);
+                txt.setGravity(Gravity.CENTER);
+
+                int[] colores = getResources().getIntArray(R.array.azules);
+
+                Log.i("MainActivity","colores[0]"+colores);
+                int color=0x00FFFF;
+
+                if (position%2==1 ){
+                    color=colores[(position-1)/2];
+                }else{
+                    color=colores[(position)/2];
+                }
+
+                view.setBackgroundColor(color);
+
+                //int height= view.getMeasuredHeight();//altura del layout
+
+                //view.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT));
+                //view.getLayoutParams().height= LinearLayout.LayoutParams.WRAP_CONTENT;
+                //Log.i("MainActivity", "altura:" +view.getLayoutParams().height);
+                //view.getLayoutParams().height= LinearLayout.LayoutParams.WRAP_CONTENT;
+
+                txt.setLayoutParams(new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                txt.requestLayout();
+
+                        //wv = (WebView) findViewById(R.id.mywebview);
+                //wv.getLayoutParams().height = LayoutParams.MATCH_PARENT;
+
+
+
+                return view;
+            }
+        };
+        // Assign adapter to ListView
+        gridView.setAdapter(adapter);
+        /*
+        gridView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(getApplicationContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+
         try {
             String resultadoJSON=cargaPreguntasJSON();
             Log.i("MainActivity","resultadoJSON:"+resultadoJSON);
@@ -89,10 +162,43 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }*/
 
-    public void showQuestions (View view){
+    /*public void showQuestions (View view){
         Log.i("MainActivity","quere mostrar as preguntas");
         Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
+    }*/
+
+    public void comezarCaso(final View view){
+        // 1. Instantiate an AlertDialog.Builder with its constructor
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+        builder.setPositiveButton(R.string.cancelar, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Log.i("MainActivity","entra en comezar caso onClick botón positivo");
+            }
+        });
+
+        builder.setNegativeButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Log.i("MainActivity","entra en comezar caso onClick botón negativo id:"+id);
+                Intent intent = new Intent(getApplicationContext(), OptionListActivity.class);
+                view.getTag();
+                intent.putExtra("num_pregunta",String.valueOf(view.getTag()));
+                Log.i("MainActivity", "view.getTag():" + view.getTag());
+                startActivity(intent);
+
+            }
+        });
+
+        String text=getResources().getString(R.string.comezar);
+        // 2. Chain together various setter methods to set the dialog characteristics
+        builder.setMessage(text);
+        String titulo=getResources().getString(R.string.comezar_title) +  " "+view.getTag();
+        builder.setTitle(titulo);
+        // 3. Get the AlertDialog from create()
+        Log.i("MainActivity","crea el dialogo");
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override

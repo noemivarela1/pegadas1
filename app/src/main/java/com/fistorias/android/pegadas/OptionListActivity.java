@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,13 +20,17 @@ public class OptionListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.option_list);
 
+        Intent intent = getIntent();
+        String num_pregunta=intent.getStringExtra("num_pregunta");
+
         ActionBar actionBar = getActionBar();
-        actionBar.setTitle(R.string.pregunta1);
+        actionBar.setTitle(R.string.pregunta+" "+num_pregunta);
 
         PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
-        Cursor cursor=mDbHelper.getPregunta(1,1);
+        Cursor cursor=mDbHelper.getPregunta(1,Integer.parseInt(num_pregunta));
 
         //Nos aseguramos de que existe al menos un registro
         String enunciado="";
