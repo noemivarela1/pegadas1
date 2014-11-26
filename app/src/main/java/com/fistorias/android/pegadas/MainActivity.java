@@ -75,10 +75,10 @@ public class MainActivity extends Activity {
                 //Log.i("MainActivity", "altura:" +view.getLayoutParams().height);
                 //view.getLayoutParams().height= LinearLayout.LayoutParams.WRAP_CONTENT;
 
-                txt.setLayoutParams(new ViewGroup.LayoutParams(
+                /*txt.setLayoutParams(new ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));
-                txt.requestLayout();
+                txt.requestLayout();*/
 
                         //wv = (WebView) findViewById(R.id.mywebview);
                 //wv.getLayoutParams().height = LayoutParams.MATCH_PARENT;
