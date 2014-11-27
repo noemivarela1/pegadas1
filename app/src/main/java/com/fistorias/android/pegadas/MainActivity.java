@@ -11,9 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fistorias.android.pegadas.data.PegadasDBHelper;
 
@@ -67,7 +69,8 @@ public class MainActivity extends Activity {
                 }
 
                 view.setBackgroundColor(color);
-
+                int numFillo=parent.getChildCount();
+                view.setTag(numFillo+1);
                 Log.i("MainActivity","altura:"+view.getMinimumHeight());
                 Log.i("MainActivity","número de hijos:"+parent.getChildCount());
                 //int numFilas=(parent.getChildCount()+1)/2;
@@ -83,13 +86,14 @@ public class MainActivity extends Activity {
 
         // Assign adapter to ListView
         gridView.setAdapter(adapter);
-        /*
-        gridView.setOnItemClickListener(new OnItemClickListener() {
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Toast.makeText(getApplicationContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+                comezarCaso(v);
             }
-        });*/
+        });
 
 
         try {
@@ -141,25 +145,10 @@ public class MainActivity extends Activity {
                 HashMap map=(HashMap) list.get(i);
                 mDbHelper.addResposta(new Resposta(rowIdPregunta,(String)map.get("texto_resposta"),(Integer)map.get("e_resposta_correcta"),(String)map.get("explicacion")));
             }
-            /*mDbHelper.addResposta(new Resposta(rowIdPregunta,jArray[0],0,"incorrecto1"));
-            mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta2",0,"incorrecto2"));
-            mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta3",0,"correcto"));
-            mDbHelper.addResposta(new Resposta(rowIdPregunta,"resposta4",0,"incorrecto4"));*/
         }catch (JSONException jsone){
             jsone.printStackTrace();
         }
     }
-
-    /*public void doQuestion (View view){
-         Intent intent = new Intent(this, OptionListActivity.class);
-        startActivity(intent);
-    }*/
-
-    /*public void showQuestions (View view){
-        Log.i("MainActivity","quere mostrar as preguntas");
-        Intent intent = new Intent(this, ListActivity.class);
-        startActivity(intent);
-    }*/
 
     public void comezarCaso(final View view){
         // 1. Instantiate an AlertDialog.Builder with its constructor
