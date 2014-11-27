@@ -68,26 +68,19 @@ public class MainActivity extends Activity {
 
                 view.setBackgroundColor(color);
 
-                //int height= view.getMeasuredHeight();//altura del layout
-
-                //view.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT));
-                //view.getLayoutParams().height= LinearLayout.LayoutParams.WRAP_CONTENT;
-                //Log.i("MainActivity", "altura:" +view.getLayoutParams().height);
-                //view.getLayoutParams().height= LinearLayout.LayoutParams.WRAP_CONTENT;
-
-                /*txt.setLayoutParams(new ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT));
-                txt.requestLayout();*/
-
-                        //wv = (WebView) findViewById(R.id.mywebview);
-                //wv.getLayoutParams().height = LayoutParams.MATCH_PARENT;
-
-
+                Log.i("MainActivity","altura:"+view.getMinimumHeight());
+                Log.i("MainActivity","número de hijos:"+parent.getChildCount());
+                //int numFilas=(parent.getChildCount()+1)/2;
+                int numFilas=5;
+                Log.i("MainActivity","número de filas:"+numFilas);
+                ViewGroup.LayoutParams params = view.getLayoutParams();
+                params.height = (parent.getHeight()/numFilas) ;//-params.rightMargin - params.leftMargin;
+                view.requestLayout();
 
                 return view;
             }
         };
+
         // Assign adapter to ListView
         gridView.setAdapter(adapter);
         /*
