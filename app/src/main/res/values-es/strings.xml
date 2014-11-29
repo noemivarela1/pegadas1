@@ -13,5 +13,6 @@
     <string name="pregunta1Solucion2">0</string>
     <string name="pregunta1Solucion3">1</string>
     <string name="pregunta1Solucion4">0</string>
+    <string name="pregunta">Pregunta</string>
 
 </resources>

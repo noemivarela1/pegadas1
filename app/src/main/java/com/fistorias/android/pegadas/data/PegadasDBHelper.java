@@ -35,7 +35,8 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
         String  SQL_CREATE_RESPOSTAS_TABLE = "CREATE TABLE " + Respostas.RESPOSTAS + "("
                 + Respostas._ID + " INTEGER PRIMARY KEY," + Respostas.ID_PREGUNTA + " INTEGER,"
                 + Respostas.RESPOSTA+ " TEXT,"+Respostas.E_RESPOSTA_CORRECTA + " INTEGER,"
-                + Respostas.EXPLICACION + " TEXT" + ")";
+                + Respostas.EXPLICACION + " TEXT," +" FOREIGN KEY ("+ Respostas.ID_PREGUNTA+") REFERENCES "+Preguntas.PREGUNTAS+"("+Preguntas._ID+")"
+                + ")";
         sqLiteDatabase.execSQL(SQL_CREATE_PREGUNTAS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_RESPOSTAS_TABLE);
     }
@@ -93,5 +94,13 @@ public class PegadasDBHelper extends SQLiteOpenHelper {
 
         Cursor c = db.query(Respostas.RESPOSTAS, campos, "id_pregunta=?", args, null, null, null);
         return c;
+    }
+    public int getNumPreguntas(){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String[] campos = new String[] {Preguntas._ID, Preguntas.NUM_CASO,Preguntas.NUM_PREGUNTA,Preguntas.ENUNCIADO};
+        Cursor c=db.query(Preguntas.PREGUNTAS, campos,null, null, null, null, null);
+        int num_preguntas=c.getCount();
+        Log.i("PegadasDBHelper","num_preguntas:"+num_preguntas);
+        return num_preguntas;
     }
 }

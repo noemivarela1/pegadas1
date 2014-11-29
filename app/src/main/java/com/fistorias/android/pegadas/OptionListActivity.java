@@ -27,7 +27,9 @@ public class OptionListActivity extends Activity {
         String num_pregunta=intent.getStringExtra("num_pregunta");
 
         ActionBar actionBar = getActionBar();
-        actionBar.setTitle(R.string.pregunta+" "+num_pregunta);
+        String titulo=this.getApplicationContext().getString(R.string.pregunta)+" "+String.valueOf(num_pregunta);
+        Log.i("OptionListActivity","titulo:"+titulo);
+        actionBar.setTitle(titulo);
 
         PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
         Cursor cursor=mDbHelper.getPregunta(1,Integer.parseInt(num_pregunta));
