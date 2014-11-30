@@ -103,6 +103,40 @@
                         "explicacion": "O Apóstolo é a primeira película de animación stop-motion en tres dimensións realizada en Europa"
                     }
                 ]
+            },
+            {
+                "pregunta": {
+                    "num_pregunta": 4,
+                    "cod_idioma": "GL",
+                    "tipo_pregunta": "P4R",
+                    "enunciado": "A palabra jeans que se usa para nombrar aos pantalóns vaqueiros ven do nome en francés de..."
+                },
+                "respostas": [
+                    {
+                        "id_pregunta": 4,
+                        "texto_resposta": "Gante (Bélxica)",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "O gante é unha especie de lenzo cru"
+                    },
+                    {
+                        "id_pregunta": 4,
+                        "texto_resposta": "Nimes (Francia)",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "Nimes é a cidade francesa de onde é orixinaria a tela denim"
+                    },
+                    {
+                        "id_pregunta": 4,
+                        "texto_resposta": "Alepo (Siria)",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "O alepín é unha tela moi fina de lá fabricada en Alepo"
+                    },
+                    {
+                        "id_pregunta": 4,
+                        "texto_resposta": "Xénova (Italia)",
+                        "e_resposta_correcta": 1,
+                        "explicacion": "Os ingleses entendían or jean un tecido denso e forte de algodón fabricado en Xénova"
+                    }
+                ]
             }
         ]
     }

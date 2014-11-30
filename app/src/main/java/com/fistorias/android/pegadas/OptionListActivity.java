@@ -91,7 +91,7 @@ public class OptionListActivity extends Activity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(OptionListActivity.this);
                         //num_pregunta++;
                         final String n=parametros[4];
-                        builder.setNeutralButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                        builder.setNeutralButton(R.string.seguinte, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
                                 Log.i("OptionListActivity","entra en onClick de Dialog");
