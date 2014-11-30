@@ -17,17 +17,6 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fistorias.android.pegadas.data.PegadasDBHelper;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 
 public class MainActivity extends Activity {
     int numCasos=10;
@@ -96,7 +85,10 @@ public class MainActivity extends Activity {
         });
 
         //inserción de datos en la base de datos
-        PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
+        Log.i("Main activity","chama a cargaPreguntasBD");
+        CargaPreguntasBD carga=new CargaPreguntasBD(this);
+        carga.execute();
+        /*PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
         int num_preguntas=mDbHelper.getNumPreguntas();
         Log.i("MainActivity","num_preguntas:"+num_preguntas);
         if (num_preguntas>0) {
@@ -156,7 +148,7 @@ public class MainActivity extends Activity {
             } catch (JSONException jsone) {
                 jsone.printStackTrace();
             }
-        }
+        }*/
     }
 
     public void comezarCaso(final View view){
@@ -213,7 +205,7 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public String cargaPreguntasJSON(){
+    /*public String cargaPreguntasJSON(){
         Log.i("MainActivity","entra en cargaPreguntaJSON");
         String json=null;
 
@@ -228,6 +220,6 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
         return json;
-    }
+    }*/
 }
 // Caso compuesto de pistas. Cada pista compuesta de preguntas y respuestas
