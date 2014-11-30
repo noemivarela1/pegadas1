@@ -63,10 +63,44 @@
                         "explicacion": "A palabra ungulado derívase do latín ungula, diminutivo de unguis (unlla)"
                     },
                     {
-                        "id_pregunta": 1,
+                        "id_pregunta": 2,
                         "texto_resposta": "Ápodos",
                         "e_resposta_correcta": 0,
                         "explicacion": "Un animal ápodo é un animal sen extrimidades"
+                    }
+                ]
+            },
+            {
+                "pregunta": {
+                    "num_pregunta": 3,
+                    "cod_idioma": "GL",
+                    "tipo_pregunta": "P4R",
+                    "enunciado": "A película dirixida por Daniel Monzón en 2009 e gañadora de 8 premios Goya é..."
+                },
+                "respostas": [
+                    {
+                        "id_pregunta": 3,
+                        "texto_resposta": "Cela 211",
+                        "e_resposta_correcta": 1,
+                        "explicacion": "Gañou, entre outros, os premios a mellor película, mellor actor e mellor director"
+                    },
+                    {
+                        "id_pregunta": 3,
+                        "texto_resposta": "Engurras",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "Foi unha das grandes vencedoras dos Premio Mestre Mateo 2011 (entregados en 2012), gañando varios dos galardóns principais, incluíndo os de guión e mellor longametraxe de animación"
+                    },
+                    {
+                        "id_pregunta": 3,
+                        "texto_resposta": "Os Crebinsky",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "Nos premios Mestre Mateo 2010 Os Crebinsky tiña 12 candidaturas, levando finalmente catro galardóns"
+                    },
+                    {
+                        "id_pregunta": 3,
+                        "texto_resposta": "O Apóstolo",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "O Apóstolo é a primeira película de animación stop-motion en tres dimensións realizada en Europa"
                     }
                 ]
             }
