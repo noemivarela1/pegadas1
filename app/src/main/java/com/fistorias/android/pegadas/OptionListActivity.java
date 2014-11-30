@@ -25,9 +25,9 @@ public class OptionListActivity extends Activity {
 
         Intent intent = getIntent();
         String num_pregunta=intent.getStringExtra("num_pregunta");
-
+        int n_pregunta=Integer.parseInt(num_pregunta);
         ActionBar actionBar = getActionBar();
-        String titulo=this.getApplicationContext().getString(R.string.pregunta)+" "+String.valueOf(num_pregunta);
+        String titulo=this.getApplicationContext().getString(R.string.pregunta)+" "+n_pregunta;
         Log.i("OptionListActivity","titulo:"+titulo);
         actionBar.setTitle(titulo);
 
@@ -67,7 +67,8 @@ public class OptionListActivity extends Activity {
                 textView[j-1].setText(resposta);
                 int correcta=cursor1.getInt(1);
                 String explicacion=cursor1.getString(2);
-                String[] parametros={String.valueOf(j),String.valueOf(correcta),explicacion,resposta};
+                Log.i("OptionListActivity","num_pregunta:"+num_pregunta);
+                String[] parametros={String.valueOf(j),String.valueOf(correcta),explicacion,resposta,num_pregunta};
                 textView[j-1].setTag(parametros);
                 textView[j-1].setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -88,10 +89,21 @@ public class OptionListActivity extends Activity {
 
                         // 1. Instantiate an AlertDialog.Builder with its constructor
                         AlertDialog.Builder builder = new AlertDialog.Builder(OptionListActivity.this);
-
+                        //num_pregunta++;
+                        final String n=parametros[4];
                         builder.setNeutralButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+
                                 Log.i("OptionListActivity","entra en onClick de Dialog");
+                                Intent intent = new Intent(getApplicationContext(), OptionListActivity.class);
+                                //view.getTag();
+
+                                int np=Integer.parseInt(n);
+                                np++;
+                                Log.i("OptionListActivity","np:"+np);
+                                intent.putExtra("num_pregunta",String.valueOf(np));
+                                //Log.i("MainActivity", "view.getTag():" + view.getTag());
+                                startActivity(intent);
                             }
                         });
                         // 2. Chain together various setter methods to set the dialog characteristics

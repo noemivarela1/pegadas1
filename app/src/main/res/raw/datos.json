@@ -1,36 +1,74 @@
 {
     "caso": {
         "num_caso": 1,
-        "pregunta": {
-            "num_pregunta": 1,
-            "cod_idioma": "ES",
-            "tipo_pregunta": "P4R",
-            "enunciado": "Árbore considerada como sagrada por budistas e hindúes e que tamén é a árbore nacional da India..."
-        },
-        "respostas": [
+        "preguntas": [
             {
-                "id_pregunta": 1,
-                "texto_resposta": "Castiñeiro de Indias",
-                "e_resposta_correcta": 0,
-                "explicacion": "O castiñeiro de Indias é orixinario da India, Irán, Asia Menor e os Balcáns"
+                "pregunta": {
+                    "num_pregunta": 1,
+                    "cod_idioma": "GL",
+                    "tipo_pregunta": "P4R",
+                    "enunciado": "Árbore considerada como sagrada por budistas e hindúes e que tamén é a árbore nacional da India..."
+                },
+                "respostas": [
+                    {
+                        "id_pregunta": 1,
+                        "texto_resposta": "Castiñeiro de Indias",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "O castiñeiro de Indias é orixinario da India, Irán, Asia Menor e os Balcáns"
+                    },
+                    {
+                        "id_pregunta": 1,
+                        "texto_resposta": "Figueira de Bengala",
+                        "e_resposta_correcta": 1,
+                        "explicacion": "A figueira de Bengala é a árbore nacional da India"
+                    },
+                    {
+                        "id_pregunta": 1,
+                        "texto_resposta": "Moreira",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "A moreira é unha árbore pequena, de folla caduca, orixinaria da China e norte da India"
+                    },
+                    {
+                        "id_pregunta": 1,
+                        "texto_resposta": "Tamarindo",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "O tamarindo é unha árbore tropical, orixinaria do leste de África"
+                    }
+                ]
             },
             {
-                "id_pregunta": 1,
-                "texto_resposta": "Figueira de Bengala",
-                "e_resposta_correcta": 1,
-                "explicacion": "A figueira de Bengala é a árbore nacional da India"
-            },
-            {
-                "id_pregunta": 1,
-                "texto_resposta": "Moreira",
-                "e_resposta_correcta": 0,
-                "explicacion": "A moreira é unha árbore pequena, de folla caduca, orixinaria da China e norte da India"
-            },
-            {
-                "id_pregunta": 1,
-                "texto_resposta": "Tamarindo",
-                "e_resposta_correcta": 0,
-                "explicacion": "O tamarindo é unha árbore tropical, orixinaria do leste de África"
+                "pregunta": {
+                    "num_pregunta": 2,
+                    "cod_idioma": "GL",
+                    "tipo_pregunta": "P4R",
+                    "enunciado": "Os animáis mamíferos que andan sobre unhas unllas moi desenvolvidas compostas por queratina que cubren os dedos das patas son..."
+                },
+                "respostas": [
+                    {
+                        "id_pregunta": 2,
+                        "texto_resposta": "Cefalópodos",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "Os cefalópodos son unha clase de moluscos invertebrados mariños"
+                    },
+                    {
+                        "id_pregunta": 2,
+                        "texto_resposta": "Artrópodos",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "Os artrópodos teñen o corpo formado por aneis e patas articuladas"
+                    },
+                    {
+                        "id_pregunta": 2,
+                        "texto_resposta": "Ungulados",
+                        "e_resposta_correcta": 1,
+                        "explicacion": "A palabra ungulado derívase do latín ungula, diminutivo de unguis (unlla)"
+                    },
+                    {
+                        "id_pregunta": 1,
+                        "texto_resposta": "Ápodos",
+                        "e_resposta_correcta": 0,
+                        "explicacion": "Un animal ápodo é un animal sen extrimidades"
+                    }
+                ]
             }
         ]
     }

@@ -33,61 +33,72 @@ public class CargaPreguntasBD extends AsyncTask<Void, Void, Void> {
         Log.i("CargaPreguntasBD","entra en doInBackground");
         PegadasDBHelper mDbHelper = new PegadasDBHelper(mContext);
         int num_preguntas=mDbHelper.getNumPreguntas();
-        Log.i("MainActivity", "num_preguntas:" + num_preguntas);
+        Log.i("CargaPreguntasBD", "num_preguntas:" + num_preguntas);
         if (num_preguntas>0) {
-            Log.i("MainActivity","Base de datos creada");
+            Log.i("CargaPreguntasBD","Base de datos creada");
         } else {
             try {
-                Log.i("MainActivity","Base de datos non creada");
+                Log.i("CargaPreguntasBD", "Base de datos non creada");
                 String resultadoJSON = cargaPreguntasJSON();
                 //Log.i("MainActivity", "resultadoJSON:" + resultadoJSON);
                 JSONObject jObject = new JSONObject(resultadoJSON);
                 JSONObject caso = jObject.getJSONObject("caso");
                 int num_caso = caso.getInt("num_caso");
-                Log.i("MainActivity", "num_caso:" + num_caso);
+                Log.i("CargaPreguntasBD", "num_caso:" + num_caso);
                 //Log.i("MainActivity", "enunciado:" + caso);
-                JSONObject pregunta = caso.getJSONObject("pregunta");
-                int num_pregunta = pregunta.getInt("num_pregunta");
-                String cod_idioma = pregunta.getString("cod_idioma");
-                String tipo_pregunta = pregunta.getString("tipo_pregunta");
-
-                String enunciado = pregunta.getString("enunciado");
-                //Log.i("MainActivity", "enunciado:" + enunciado);
-                ArrayList list = new ArrayList();
-                JSONArray jArray = caso.getJSONArray("respostas");
-                for (int i = 0; i < jArray.length(); i++) {
+                JSONArray jArrayPreguntas = caso.getJSONArray("preguntas");
+                for (int j = 0; j < jArrayPreguntas.length(); j++) {
                     try {
-                        JSONObject oneObject = jArray.getJSONObject(i);
-                        // Pulling items from the array
-                        String texto_resposta = oneObject.getString("texto_resposta");
-                        int e_resposta_correcta = oneObject.getInt("e_resposta_correcta");
-                        String explicacion = oneObject.getString("explicacion");
 
-                        HashMap map = new HashMap();
+                        JSONObject obxecto = jArrayPreguntas.getJSONObject(j);
+                        JSONObject pregunta = obxecto.getJSONObject("pregunta");
+                        Log.i("CargaPreguntasBD", "pregunta:" + pregunta);
+                        int num_pregunta = pregunta.getInt("num_pregunta");
+                        Log.i("CargaPreguntasBD", "num_pregunta:" + num_pregunta);
+                        String cod_idioma = pregunta.getString("cod_idioma");
+                        String tipo_pregunta = pregunta.getString("tipo_pregunta");
 
-                        map.put("texto_resposta", texto_resposta);
-                        map.put("e_resposta_correcta", e_resposta_correcta);
-                        map.put("explicacion", explicacion);
+                        String enunciado = pregunta.getString("enunciado");
+                        //Log.i("MainActivity", "enunciado:" + enunciado);
+                        ArrayList list = new ArrayList();
+                        JSONArray jArray = obxecto.getJSONArray("respostas");
+                        for (int i = 0; i < jArray.length(); i++) {
+                            try {
+                                Log.i("CargaPreguntasBD","carga as respostas");
+                                JSONObject oneObject = jArray.getJSONObject(i);
+                                // Pulling items from the array
+                                String texto_resposta = oneObject.getString("texto_resposta");
+                                int e_resposta_correcta = oneObject.getInt("e_resposta_correcta");
+                                String explicacion = oneObject.getString("explicacion");
 
-                        list.add(map);
+                                HashMap map = new HashMap();
+
+                                map.put("texto_resposta", texto_resposta);
+                                map.put("e_resposta_correcta", e_resposta_correcta);
+                                map.put("explicacion", explicacion);
+
+                                list.add(map);
+                            } catch (JSONException e) {
+                                // Oops
+                            }
+                        }
+
+
+                        //PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
+
+                        Log.d("Insert: ", "Inserting ...in the database");
+                        long rowIdPregunta = mDbHelper.addPregunta(new Pregunta(num_caso, num_pregunta, cod_idioma, tipo_pregunta, enunciado));
+                        for (int i = 0; i < jArray.length(); i++) {
+                            HashMap map = (HashMap) list.get(i);
+                            mDbHelper.addResposta(new Resposta(rowIdPregunta, (String) map.get("texto_resposta"), (Integer) map.get("e_resposta_correcta"), (String) map.get("explicacion")));
+                        }
                     } catch (JSONException e) {
-                        // Oops
+                        //oops
                     }
+                    num_preguntas = mDbHelper.getNumPreguntas();
+                    Log.i("MainActivity", "num_preguntas:" + num_preguntas);
+                    //Toast.makeText(getApplicationContext(),"número", Toast.LENGTH_SHORT).show();
                 }
-
-
-                //PegadasDBHelper mDbHelper = new PegadasDBHelper(this);
-
-                Log.d("Insert: ", "Inserting ...in the database");
-                long rowIdPregunta = mDbHelper.addPregunta(new Pregunta(num_caso, num_pregunta, cod_idioma, tipo_pregunta, enunciado));
-                for (int i = 0; i < jArray.length(); i++) {
-                    HashMap map = (HashMap) list.get(i);
-                    mDbHelper.addResposta(new Resposta(rowIdPregunta, (String) map.get("texto_resposta"), (Integer) map.get("e_resposta_correcta"), (String) map.get("explicacion")));
-                }
-                //int num_preguntas = mDbHelper.getNumPreguntas();
-                Log.i("MainActivity", "num_preguntas:" + num_preguntas);
-                //Toast.makeText(getApplicationContext(),"número", Toast.LENGTH_SHORT).show();
-
             } catch (JSONException jsone) {
                 jsone.printStackTrace();
             }
